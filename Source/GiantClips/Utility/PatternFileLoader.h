@@ -6,6 +6,7 @@
 
 #include <string>
 #include <iostream>
+#include <utility>
 
 #include "PatternFileLoader.generated.h"
 
@@ -26,10 +27,14 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
     private:
-    static const int PATTERN_WIDTH = 4;
-    static const int PATTERN_HEIGHT = 4;
+    static const int PATTERN_WIDTH = 8;
+    static const int PATTERN_HEIGHT = 8;
 
+    typedef std::pair<size_t, size_t> WidthHeight;
+
+    static const WidthHeight FULL_HEAD_DIM;
     static const bool* FULL_HEAD;
+    static const WidthHeight MOHAWK_DIM;
     static const bool* MOHAWK;
 
     public:
@@ -43,21 +48,36 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
         o_hairWidth = PATTERN_WIDTH;
 
         const bool* selected;
+        WidthHeight dimensions;
 
         switch(i_patternEnum)
         {
             default:
             case PATTERN_ENUM::FULL_HEAD:
                 selected = FULL_HEAD;
+                dimensions = FULL_HEAD_DIM;
                 break;
             case PATTERN_ENUM::MOHAWK:
                 selected = MOHAWK;
+                dimensions = MOHAWK_DIM;
                 break;
         }
 
-        for(int i = 0; i < o_size; i++)
+        const float widthConversion = PATTERN_WIDTH/dimensions.first;
+        const float heightConversion = PATTERN_WIDTH/dimensions.second;
+        const int conversion = widthConversion*heightConversion;
+        for(int j = 0; j < dimensions.second; j++)
         {
-            retArray.Add(selected[i]);
+            for(int jj = 0; jj < heightConversion; jj++)
+            {
+                for(int i = 0; i < dimensions.first; i++)
+                {
+                    for(int ii = 0; ii < widthConversion; ii++)
+                    {
+                        retArray.Add(selected[i]);
+                    }
+                }
+            }
         }
 
         return retArray;
