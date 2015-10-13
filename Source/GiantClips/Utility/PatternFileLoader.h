@@ -65,7 +65,6 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
 
         const float widthConversion = PATTERN_WIDTH/dimensions.first;
         const float heightConversion = PATTERN_WIDTH/dimensions.second;
-        const int conversion = widthConversion*heightConversion;
         for(int j = 0; j < dimensions.second; j++)
         {
             for(int jj = 0; jj < heightConversion; jj++)
