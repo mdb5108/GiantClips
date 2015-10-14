@@ -27,8 +27,8 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
 	GENERATED_BODY()
 
     private:
-    static const int PATTERN_WIDTH = 8;
-    static const int PATTERN_HEIGHT = 8;
+    static const int PATTERN_WIDTH = 16;
+    static const int PATTERN_HEIGHT = 20;
 
     typedef std::pair<size_t, size_t> WidthHeight;
 
@@ -63,8 +63,8 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
                 break;
         }
 
-        const float widthConversion = PATTERN_WIDTH/dimensions.first;
-        const float heightConversion = PATTERN_WIDTH/dimensions.second;
+        const int widthConversion = PATTERN_WIDTH/dimensions.first;
+        const int heightConversion = PATTERN_HEIGHT/dimensions.second;
         for(int j = 0; j < dimensions.second; j++)
         {
             for(int jj = 0; jj < heightConversion; jj++)
@@ -73,7 +73,7 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
                 {
                     for(int ii = 0; ii < widthConversion; ii++)
                     {
-                        retArray.Add(selected[i]);
+                        retArray.Add(selected[i + j*dimensions.second]);
                     }
                 }
             }
