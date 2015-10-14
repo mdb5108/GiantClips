@@ -15,6 +15,7 @@ enum class PATTERN_ENUM : uint8
 {
     FULL_HEAD = 0 UMETA(DisplayName="Full Head"),
     MOHAWK UMETA(DisplayName="Mohawk"),
+    FOUR_SPIKE UMETA(DisplayName="Four Spikes"),
 };
 	
 
@@ -36,6 +37,8 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
     static const bool* FULL_HEAD;
     static const WidthHeight MOHAWK_DIM;
     static const bool* MOHAWK;
+    static const WidthHeight FOUR_SPIKE_DIM;
+    static const bool* FOUR_SPIKE;
 
     public:
 
@@ -60,6 +63,10 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
             case PATTERN_ENUM::MOHAWK:
                 selected = MOHAWK;
                 dimensions = MOHAWK_DIM;
+                break;
+            case PATTERN_ENUM::FOUR_SPIKE:
+                selected = FOUR_SPIKE;
+                dimensions = FOUR_SPIKE_DIM;
                 break;
         }
 

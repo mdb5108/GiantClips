@@ -20,3 +20,13 @@ static const bool MOHAWK_DATA[] = {
 };
 const UPatternFileLoader::WidthHeight UPatternFileLoader::MOHAWK_DIM = std::make_pair(4, 4);
 const bool* UPatternFileLoader::MOHAWK = &MOHAWK_DATA[0];
+
+static const bool FOUR_SPIKE_DATA[] = {
+    1, 1, 0, 1, 1,
+    1, 1, 0, 1, 1,
+    0, 0, 0, 0, 0,
+    1, 1, 0, 1, 1,
+    1, 1, 0, 1, 1,
+};
+const UPatternFileLoader::WidthHeight UPatternFileLoader::FOUR_SPIKE_DIM = std::make_pair(5, 5);
+const bool* UPatternFileLoader::FOUR_SPIKE = &FOUR_SPIKE_DATA[0];
