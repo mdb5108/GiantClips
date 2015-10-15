@@ -29,7 +29,7 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
 
     private:
     static const int PATTERN_WIDTH = 12;
-    static const int PATTERN_HEIGHT = 18;
+    static const int PATTERN_HEIGHT = 16;
 
     typedef std::pair<size_t, size_t> WidthHeight;
 
@@ -71,7 +71,9 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
         }
 
         const int widthConversion = PATTERN_WIDTH/dimensions.first;
+        const int widthLeftOver = PATTERN_WIDTH % dimensions.first;
         const int heightConversion = PATTERN_HEIGHT/dimensions.second;
+        const int heightLeftOver = PATTERN_HEIGHT % dimensions.second;
         for(int j = 0; j < dimensions.second; j++)
         {
             for(int jj = 0; jj < heightConversion; jj++)
