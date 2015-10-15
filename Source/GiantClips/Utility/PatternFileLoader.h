@@ -29,7 +29,7 @@ class GIANTCLIPS_API UPatternFileLoader : public UBlueprintFunctionLibrary
 
     private:
     static const int PATTERN_WIDTH = 12;
-    static const int PATTERN_HEIGHT = 22;
+    static const int PATTERN_HEIGHT = 18;
 
     typedef std::pair<size_t, size_t> WidthHeight;
 
